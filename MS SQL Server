@@ -1,0 +1,39 @@
+Revising SQL with SQL Server:
+
+Question: Query the average population of all cities in CITY where District is California.
+Answer:
+Average is  unrecognized command in SQL Server. Hence, we use the following command.
+
+select sum(population)/count(population) from city where district = 'California';
+
+
+Question: Query the average population for all cities in CITY, rounded down to the nearest integer.
+Answer:
+select round(sum(population)/count(population), 2) from city;
+
+Question: Write a query to print all prime numbers less than or equal to 1000. Print your result on a single line, and use the ampersand () character as your separator.
+Answer:
+DECLARE @i int=2;
+declare @prime int = 0;
+DECLARE @result nvarchar(1000) = ''; --CAN BE ADJUSTED
+WHILE (@i<=1000)
+begin
+   DECLARE @j int = @i-1;
+   SET @prime = 1;
+   WHILE(@j > 1)
+   begin
+      IF @i % @j = 0
+      begin 
+         SET @PRIME = 0;
+      end
+    set @j = @j - 1;
+   end
+   
+   IF @PRIME = 1
+   BEGIN
+      set @result += cast(@i as nvarchar(1000)) + '&';
+   END
+set @i = @i + 1;
+end
+set @result = SUBSTRING(@result, 1, LEN(@result) - 1)
+select @result
