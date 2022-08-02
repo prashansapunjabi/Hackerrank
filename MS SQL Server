@@ -37,3 +37,7 @@ set @i = @i + 1;
 end
 set @result = SUBSTRING(@result, 1, LEN(@result) - 1)
 select @result
+
+Question: Given the CITY and COUNTRY tables, query the names of all cities where the CONTINENT is 'Africa'.
+Answer: 
+select c1.name from city c1 join country c2 on c1.countrycode = c2.code where c2.continent = 'Africa';
