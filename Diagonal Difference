@@ -1,0 +1,24 @@
+Given a square matrix, calculate the absolute difference between the sums of its diagonals.
+For example, the square matrix  is shown below:
+
+1 2 3
+4 5 6
+9 8 9 
+
+The left-to-right diagonal = . The right to left diagonal = . Their absolute difference is .
+We have to complete the function in the editor below called diagonalDifference, which takes the following parameter:
+int arr[n][m]: an array of integers
+Returns 
+int: the absolute diagonal difference
+Input Format
+The first line contains a single integer, , the number of rows and columns in the square matrix .
+Each of the next  lines describes a row, , and consists of  space-separated integers .
+
+My Approach:
+I found the elements across the first and the second diagonal of the nxm matrix. I then summed up the elements and found their absolute difference. Please find the code for the function below:
+
+def diagonalDifference(arr):
+    # Write your code here
+    addarr = sum([arr[i][j] for i in range(n) for j in range(n) if i == j])
+    addarr1 = sum([arr[i][j] for i in range(n) for j in range(n) if i == (n-j-1)])
+    return abs(addarr - addarr1)
